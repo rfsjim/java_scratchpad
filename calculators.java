@@ -7,10 +7,12 @@ public class Calculators {
         return firstNumber * secondNumber;
     }
 
-    public static int divide(int firstNumber, int secondNumber) throws Exception {
-        if (firstNumber != 0 && secondNumber != 0) {
-            return firstNumber / secondNumber;
-        } else return 0;
+    public static int divide(int firstNumber, int secondNumber) {
+        if (secondNumber == 0) {
+            System.out.println("Error: Division by zero");
+            return 0;
+        }
+        return firstNumber / secondNumber;
     }
 
     public static int addition(int firstNumber, int secondNumber) {
