@@ -1,12 +1,29 @@
+/**
+ * A simple calculator program that performs basic arithmetic operations
+ * and saves/reads numbers from a file.
+ * Author: James
+ * Date: 21st July 2023
+ * Update: 2nd Noveember 2025
+ */
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.File;
 
+/**
+ * Calculators class containing methods for arithmetic operations
+ * and file handling.
+ */
 public class Calculators {
+    /**
+     * Multiplies two integers.
+     */
     public static int multiply(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
     }
-
+    /**
+     * Divides two integers, handling division by zero.
+     */
     public static int divide(int firstNumber, int secondNumber) {
         if (secondNumber == 0) {
             System.out.println("Error: Division by zero");
@@ -14,15 +31,22 @@ public class Calculators {
         }
         return firstNumber / secondNumber;
     }
-
+    /**
+     * Adds two integers.
+     */
     public static int addition(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }
-
+    /**
+     * Subtracts the second integer from the first.
+     */
     public static int subtract(int firstNumber, int secondNumber) {
         return firstNumber - secondNumber;
     }
 
+    /**
+     * Saves two integers to a file.
+     */
     public static void saveNumbers(int firstNumber, int secondNumber) throws Exception{
         PrintWriter fileWriter = new PrintWriter("user.data");
 
@@ -31,10 +55,16 @@ public class Calculators {
         fileWriter.close();
     }
 
+    /**
+     * Reads an integer from a file scanner.
+     */
     public static int readNumber(Scanner fileScanner) throws Exception {
         return fileScanner.nextInt();
     }
 
+    /**
+     * Main method to execute the calculator program.
+     */
     public static void main(String[] args) throws Exception {
         File userDataFile = new File("user.data");
 
