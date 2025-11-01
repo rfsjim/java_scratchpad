@@ -2,7 +2,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.File;
 
-public class calculators {
+public class Calculators {
     public static int multiply(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
     }
