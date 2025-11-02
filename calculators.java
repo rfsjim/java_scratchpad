@@ -24,12 +24,13 @@ public class Calculators {
     /**
      * Divides two integers, handling division by zero.
      */
-    public static int divide(int firstNumber, int secondNumber) {
+    public static String divide(int firstNumber, int secondNumber) {
         if (secondNumber == 0) {
             System.out.println("Error: Division by zero");
-            return 0;
+            return "undefined";
         }
-        return firstNumber / secondNumber;
+        double result = (double) firstNumber / secondNumber;
+        return String.format("%.2f", result);
     }
     /**
      * Adds two integers.
@@ -75,8 +76,11 @@ public class Calculators {
         }
 
         Scanner systemInScanner = new Scanner(System.in);
+        
+        System.out.println("Welcome to the Simple Calculator!");
+        System.out.println("--------------------------------");
 
-        System.out.printf("Enter a number: ");
+        System.out.printf("Enter the first number: ");
         int firstNumber = systemInScanner.nextInt();
 
         System.out.printf("Enter the second number: ");
@@ -84,23 +88,29 @@ public class Calculators {
 
         systemInScanner.close();
 
+        System.out.println("\nSaving numbers to file...");
+
         saveNumbers(firstNumber, secondNumber);
+
+        System.out.println("Numbers saved to 'user.data'.\n");
 
         Scanner fileScanner = new Scanner(userDataFile);
         int firstFileNumber = readNumber(fileScanner);
         int secondFileNumber = readNumber(fileScanner);
         fileScanner.close();
 
-        System.out.println("From User Input");
-        System.out.printf("%d * %d = %d\n", firstNumber, secondNumber, multiply(firstNumber, secondNumber));
-        System.out.printf("%d / %d = %d\n", firstNumber, secondNumber, divide(firstNumber, secondNumber));
-        System.out.printf("%d + %d = %d\n", firstNumber, secondNumber, addition(firstNumber,secondNumber));
-        System.out.printf("%d - %d = %d\n", firstNumber, secondNumber, subtract(firstNumber, secondNumber));
+        System.out.println();
+        System.out.println("=== Results from User Input ===");
+        System.out.printf("%d × %d = %d%n", firstNumber, secondNumber, multiply(firstNumber, secondNumber));
+        System.out.printf("%d ÷ %d = %s%n", firstNumber, secondNumber, divide(firstNumber, secondNumber));
+        System.out.printf("%d + %d = %d%n", firstNumber, secondNumber, addition(firstNumber,secondNumber));
+        System.out.printf("%d - %d = %d%n", firstNumber, secondNumber, subtract(firstNumber, secondNumber));
 
-        System.out.println("From File");
-        System.out.printf("%d * %d = %d\n", firstFileNumber, secondFileNumber, multiply(firstFileNumber, secondFileNumber));
-        System.out.printf("%d / %d = %d\n", firstFileNumber, secondFileNumber, divide(firstFileNumber, secondFileNumber));
-        System.out.printf("%d + %d = %d\n", firstFileNumber, secondFileNumber, addition(firstFileNumber,secondFileNumber));
-        System.out.printf("%d - %d = %d\n", firstFileNumber, secondFileNumber, subtract(firstFileNumber, secondFileNumber));
+        System.out.println();
+        System.out.println("=== Results from File ===");
+        System.out.printf("%d × %d = %d%n", firstFileNumber, secondFileNumber, multiply(firstFileNumber, secondFileNumber));
+        System.out.printf("%d ÷ %d = %s%n", firstFileNumber, secondFileNumber, divide(firstFileNumber, secondFileNumber));
+        System.out.printf("%d + %d = %d%n", firstFileNumber, secondFileNumber, addition(firstFileNumber,secondFileNumber));
+        System.out.printf("%d - %d = %d%n", firstFileNumber, secondFileNumber, subtract(firstFileNumber, secondFileNumber));
     }
 }
